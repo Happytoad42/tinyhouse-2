@@ -1,12 +1,7 @@
 import { MongoClient } from 'mongodb';
 import { Database } from '../lib/types';
 
-const user = 'admin';
-const userPassword = '71O2tkLMk9oNL18k';
-const cluster = 'tinyhouse-v1.c3hzl';
-const dbName = 'main';
-
-const uri = `mongodb+srv://${user}:${userPassword}@${cluster}.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 export const connectDatabase = async (): Promise<Database> => {
   const client = await MongoClient.connect(uri, {

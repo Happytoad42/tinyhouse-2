@@ -13,7 +13,6 @@ const mount = async (app: Application) => {
     context: () => ({ db }),
   });
   server.applyMiddleware({ app, path: '/api' });
-  console.log(process.env.DB_USER);
   app.listen(process.env.PORT);
 
   console.log(`[app]: http://localhost:${process.env.PORT}`);
